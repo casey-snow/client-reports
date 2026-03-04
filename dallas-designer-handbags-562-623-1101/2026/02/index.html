@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>February 2026 Report - Dallas Designer Handbags</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --brand-black: #000000;
+      --brand-dark: #1a1a1a;
+      --brand-grey: #2d2d2d;
+      --brand-accent: #00FFB1;
+      --text-primary: #111111;
+      --text-secondary: #555555;
+      --text-muted: #888888;
+      --bg-light: #f8f8f8;
+      --border: #e5e5e5;
+      --positive: #059669;
+      --negative: #dc2626;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: white;
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 48px 32px; }
+
+    /* ── Header ── */
+    .header {
+      background: var(--brand-black);
+      color: white;
+      padding: 40px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .header .period {
+      color: var(--brand-accent);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+    .header .report-type {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .header .logo {
+      color: var(--brand-accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── KPI Hero ── */
+    .kpi-hero {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .kpi-card {
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .kpi-card.primary {
+      background: var(--brand-dark);
+      color: white;
+    }
+    .kpi-card.primary .kpi-label { color: var(--brand-accent); }
+    .kpi-card.primary .kpi-value { color: white; }
+    .kpi-card.primary .kpi-goal { color: rgba(255,255,255,0.5); }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-yoy {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .kpi-goal {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .positive { color: var(--positive); }
+    .negative { color: var(--negative); }
+    .neutral { color: var(--text-muted); }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 32px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--brand-black);
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .accent-bar {
+      width: 4px;
+      height: 20px;
+      background: var(--brand-accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Metrics Grid ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .metric-cell {
+      background: white;
+      padding: 20px;
+      min-height: 100px;
+    }
+    .metric-cell .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .metric-cell .current {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-cell .previous {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .metric-cell .yoy {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── Charts ── */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .chart-card {
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .chart-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .chart-container { height: 200px; }
+
+    /* ── Tabs ── */
+    .tab-group { margin-bottom: 0; }
+    .tab-buttons {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active {
+      color: var(--text-primary);
+      background: white;
+      border-color: var(--border);
+    }
+    .tab-btn + .tab-btn { margin-left: -1px; }
+    .tab-content {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 0 8px 8px 8px;
+      overflow: hidden;
+    }
+    .tab-content.active { display: block; }
+
+    /* ── Tables ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .data-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--brand-dark);
+      color: white;
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--bg-light); }
+    .data-table .product-name {
+      max-width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .data-table .number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Empty State ── */
+    .empty-state {
+      padding: 32px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footer .brand {
+      color: var(--brand-accent);
+      font-weight: 600;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .container { padding: 24px 16px; }
+      .header { padding: 28px 24px; }
+      .header h1 { font-size: 22px; }
+      .kpi-hero { grid-template-columns: repeat(2, 1fr); }
+      .kpi-value { font-size: 26px; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .charts-grid { grid-template-columns: 1fr; }
+      .data-table { font-size: 13px; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .container { padding: 24px; max-width: 100%; }
+      .header { break-inside: avoid; }
+      .kpi-hero { break-inside: avoid; }
+      .section { break-inside: avoid; }
+      .charts-grid { break-inside: avoid; }
+      .tab-btn { print-color-adjust: exact; }
+      .chart-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <h1>Dallas Designer Handbags</h1>
+          <div class="period">February 2026 vs February 2025</div>
+          <div class="report-type">Year-over-Year Performance Report</div>
+        </div>
+        <div class="logo">Easton Digital</div>
+      </div>
+    </div>
+
+    <!-- KPI Hero -->
+    <div class="kpi-hero">
+      <div class="kpi-card primary">
+        <div class="kpi-label">ROAS</div>
+        <div class="kpi-value">7.99x</div>
+        <div class="kpi-goal">Goal: ROAS ≥ 5.0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Revenue</div>
+        <div class="kpi-value">$128.5K</div>
+        <div class="kpi-yoy positive">+89.0% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Conversions</div>
+        <div class="kpi-value">591</div>
+        <div class="kpi-yoy positive">+117.4% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ad Spend</div>
+        <div class="kpi-value">$16.1K</div>
+        <div class="kpi-yoy negative">+24.1% YoY</div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Performance Metrics — February 2026 vs 2025</h2>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-cell">
+          <div class="label">Impressions</div>
+          <div class="current">1443.0K</div>
+          <div class="previous">vs 1546.0K</div>
+          <div class="yoy negative">-6.7%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Clicks</div>
+          <div class="current">19.1K</div>
+          <div class="previous">vs 15.3K</div>
+          <div class="yoy positive">+25.1%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">CTR</div>
+          <div class="current">1.3%</div>
+          <div class="previous">vs 1.0%</div>
+          <div class="yoy positive">+34.0%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Avg CPC</div>
+          <div class="current">$0.84</div>
+          <div class="previous">vs $0.85</div>
+          <div class="yoy positive">-0.8%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Conv. Rate</div>
+          <div class="current">3.1%</div>
+          <div class="previous">vs 1.8%</div>
+          <div class="yoy positive">+73.8%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Cost / Conv.</div>
+          <div class="current">$27.19</div>
+          <div class="previous">vs $47.63</div>
+          <div class="yoy positive">-42.9%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">AOV</div>
+          <div class="current">$217.27</div>
+          <div class="previous">vs $249.93</div>
+          <div class="yoy negative">-13.1%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">ROAS</div>
+          <div class="current">7.99x</div>
+          <div class="previous">vs 5.25x</div>
+          <div class="yoy positive">+52.3%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>Revenue vs Ad Spend</h3>
+        <div class="chart-container">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Conversions</h3>
+        <div class="chart-container">
+          <canvas id="conversionsChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Products (Tabbed) -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Top 5 Products</h2>
+      </div>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'products-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'products-conversions')">By Conversions</button>
+        </div>
+        <div id="products-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Cost</th>
+                <th class="number">ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td class="product-name" title="CHANEL Beauty Lock Flap Lambskin Leather Crossbody Bag Blue">CHANEL Beauty Lock Flap Lambskin Leather Crossbody Bag Blue</td>
+                <td class="number">$5,172.48</td>
+                <td class="number">2.0</td>
+                <td class="number">$66.92</td>
+                <td class="number">77.29x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="LOUIS VUITTON V BB Monogram Empreinte Tote Shoulder Bag Navy Blue">LOUIS VUITTON V BB Monogram Empreinte Tote Shoulder Bag Navy Blue</td>
+                <td class="number">$3,990.00</td>
+                <td class="number">1.0</td>
+                <td class="number">$6.83</td>
+                <td class="number">584.19x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL See Through Flap Small Lambskin Leather Shoulder Bag White">CHANEL See Through Flap Small Lambskin Leather Shoulder Bag White</td>
+                <td class="number">$3,695.00</td>
+                <td class="number">1.0</td>
+                <td class="number">$9.07</td>
+                <td class="number">407.39x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL 22 Mini Bag Gradient Quilted Calfskin Leather Crossbody Bag Blue">CHANEL 22 Mini Bag Gradient Quilted Calfskin Leather Crossbody Bag Blue</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">1.0</td>
+                <td class="number">$24.70</td>
+                <td class="number">148.79x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL Valentine Crystal Hearts Classic Flap Quilted Leather Shoulder Bag Tricolor">CHANEL Valentine Crystal Hearts Classic Flap Quilted Leather Shoulder Bag Tricolor</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">1.0</td>
+                <td class="number">$48.85</td>
+                <td class="number">75.23x</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="products-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Cost</th>
+                <th class="number">ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td class="product-name" title="CHANEL Beauty Lock Flap Lambskin Leather Crossbody Bag Blue">CHANEL Beauty Lock Flap Lambskin Leather Crossbody Bag Blue</td>
+                <td class="number">2.0</td>
+                <td class="number">$5,172.48</td>
+                <td class="number">$66.92</td>
+                <td class="number">77.29x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="LOUIS VUITTON V BB Monogram Empreinte Tote Shoulder Bag Navy Blue">LOUIS VUITTON V BB Monogram Empreinte Tote Shoulder Bag Navy Blue</td>
+                <td class="number">1.0</td>
+                <td class="number">$3,990.00</td>
+                <td class="number">$6.83</td>
+                <td class="number">584.19x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL See Through Flap Small Lambskin Leather Shoulder Bag White">CHANEL See Through Flap Small Lambskin Leather Shoulder Bag White</td>
+                <td class="number">1.0</td>
+                <td class="number">$3,695.00</td>
+                <td class="number">$9.07</td>
+                <td class="number">407.39x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL 22 Mini Bag Gradient Quilted Calfskin Leather Crossbody Bag Blue">CHANEL 22 Mini Bag Gradient Quilted Calfskin Leather Crossbody Bag Blue</td>
+                <td class="number">1.0</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">$24.70</td>
+                <td class="number">148.79x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="CHANEL Valentine Crystal Hearts Classic Flap Quilted Leather Shoulder Bag Tricolor">CHANEL Valentine Crystal Hearts Classic Flap Quilted Leather Shoulder Bag Tricolor</td>
+                <td class="number">1.0</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">$48.85</td>
+                <td class="number">75.23x</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Top Search Terms (Tabbed) -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Top 5 Search Terms (Non-Branded)</h2>
+      </div>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>chanel valentine bag</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">1.0</td>
+                <td class="number">10</td>
+                <td class="number">$38.49</td>
+              </tr>
+              
+              <tr>
+                <td>louis vuitton carryall mm empreinte</td>
+                <td class="number">$2,595.00</td>
+                <td class="number">1.0</td>
+                <td class="number">2</td>
+                <td class="number">$6.62</td>
+              </tr>
+              
+              <tr>
+                <td>chanel caviar boy bag medium</td>
+                <td class="number">$1,900.44</td>
+                <td class="number">1.0</td>
+                <td class="number">1</td>
+                <td class="number">$0.74</td>
+              </tr>
+              
+              <tr>
+                <td>louis vuitton marceau</td>
+                <td class="number">$1,885.50</td>
+                <td class="number">1.0</td>
+                <td class="number">1</td>
+                <td class="number">$0.26</td>
+              </tr>
+              
+              <tr>
+                <td>new chanel purse</td>
+                <td class="number">$1,640.00</td>
+                <td class="number">1.0</td>
+                <td class="number">1</td>
+                <td class="number">$0.21</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>chanel valentine bag</td>
+                <td class="number">1.0</td>
+                <td class="number">$3,675.00</td>
+                <td class="number">10</td>
+                <td class="number">$38.49</td>
+              </tr>
+              
+              <tr>
+                <td>louis vuitton carryall mm empreinte</td>
+                <td class="number">1.0</td>
+                <td class="number">$2,595.00</td>
+                <td class="number">2</td>
+                <td class="number">$6.62</td>
+              </tr>
+              
+              <tr>
+                <td>chanel caviar boy bag medium</td>
+                <td class="number">1.0</td>
+                <td class="number">$1,900.44</td>
+                <td class="number">1</td>
+                <td class="number">$0.74</td>
+              </tr>
+              
+              <tr>
+                <td>louis vuitton marceau</td>
+                <td class="number">1.0</td>
+                <td class="number">$1,885.50</td>
+                <td class="number">1</td>
+                <td class="number">$0.26</td>
+              </tr>
+              
+              <tr>
+                <td>new chanel purse</td>
+                <td class="number">1.0</td>
+                <td class="number">$1,640.00</td>
+                <td class="number">1</td>
+                <td class="number">$0.21</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Report generated March 4, 2026</p>
+      <p>All metrics use conversion-time attribution &bull; <span class="brand">Easton Digital</span></p>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    function switchTab(btn, tabId) {
+      const group = btn.closest('.section');
+      group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      group.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Charts
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    Chart.defaults.color = '#888888';
+
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Feb 2025', 'Feb 2026'],
+        datasets: [
+          {
+            label: 'Revenue',
+            data: [67980.03, 128479.18],
+            backgroundColor: '#00FFB1',
+            borderRadius: 4,
+          },
+          {
+            label: 'Ad Spend',
+            data: [12956.017841, 16081.092871],
+            backgroundColor: '#1a1a1a',
+            borderRadius: 4,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect', font: { size: 12 } } }
+        },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 12 } } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('conversionsChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Feb 2025', 'Feb 2026'],
+        datasets: [{
+          label: 'Conversions',
+          data: [272, 591.343629],
+          backgroundColor: ['#2d2d2d', '#00FFB1'],
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 12 } } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

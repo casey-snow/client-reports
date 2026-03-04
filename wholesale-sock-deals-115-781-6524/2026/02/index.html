@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>February 2026 Report - Wholesale Sock Deals</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --brand-black: #000000;
+      --brand-dark: #1a1a1a;
+      --brand-grey: #2d2d2d;
+      --brand-accent: #00FFB1;
+      --text-primary: #111111;
+      --text-secondary: #555555;
+      --text-muted: #888888;
+      --bg-light: #f8f8f8;
+      --border: #e5e5e5;
+      --positive: #059669;
+      --negative: #dc2626;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: white;
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 48px 32px; }
+
+    /* ── Header ── */
+    .header {
+      background: var(--brand-black);
+      color: white;
+      padding: 40px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .header .period {
+      color: var(--brand-accent);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+    .header .report-type {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .header .logo {
+      color: var(--brand-accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── KPI Hero ── */
+    .kpi-hero {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .kpi-card {
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .kpi-card.primary {
+      background: var(--brand-dark);
+      color: white;
+    }
+    .kpi-card.primary .kpi-label { color: var(--brand-accent); }
+    .kpi-card.primary .kpi-value { color: white; }
+    .kpi-card.primary .kpi-goal { color: rgba(255,255,255,0.5); }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-yoy {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .kpi-goal {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .positive { color: var(--positive); }
+    .negative { color: var(--negative); }
+    .neutral { color: var(--text-muted); }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 32px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--brand-black);
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .accent-bar {
+      width: 4px;
+      height: 20px;
+      background: var(--brand-accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Metrics Grid ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .metric-cell {
+      background: white;
+      padding: 20px;
+      min-height: 100px;
+    }
+    .metric-cell .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .metric-cell .current {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-cell .previous {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .metric-cell .yoy {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── Charts ── */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .chart-card {
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .chart-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .chart-container { height: 200px; }
+
+    /* ── Tabs ── */
+    .tab-group { margin-bottom: 0; }
+    .tab-buttons {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active {
+      color: var(--text-primary);
+      background: white;
+      border-color: var(--border);
+    }
+    .tab-btn + .tab-btn { margin-left: -1px; }
+    .tab-content {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 0 8px 8px 8px;
+      overflow: hidden;
+    }
+    .tab-content.active { display: block; }
+
+    /* ── Tables ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .data-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--brand-dark);
+      color: white;
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--bg-light); }
+    .data-table .product-name {
+      max-width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .data-table .number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Empty State ── */
+    .empty-state {
+      padding: 32px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footer .brand {
+      color: var(--brand-accent);
+      font-weight: 600;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .container { padding: 24px 16px; }
+      .header { padding: 28px 24px; }
+      .header h1 { font-size: 22px; }
+      .kpi-hero { grid-template-columns: repeat(2, 1fr); }
+      .kpi-value { font-size: 26px; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .charts-grid { grid-template-columns: 1fr; }
+      .data-table { font-size: 13px; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .container { padding: 24px; max-width: 100%; }
+      .header { break-inside: avoid; }
+      .kpi-hero { break-inside: avoid; }
+      .section { break-inside: avoid; }
+      .charts-grid { break-inside: avoid; }
+      .tab-btn { print-color-adjust: exact; }
+      .chart-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <h1>Wholesale Sock Deals</h1>
+          <div class="period">February 2026 vs February 2025</div>
+          <div class="report-type">Year-over-Year Performance Report</div>
+        </div>
+        <div class="logo">Easton Digital</div>
+      </div>
+    </div>
+
+    <!-- KPI Hero -->
+    <div class="kpi-hero">
+      <div class="kpi-card primary">
+        <div class="kpi-label">ACoS</div>
+        <div class="kpi-value">19.9%</div>
+        <div class="kpi-goal">Goal: ACoS ≤ 18%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Revenue</div>
+        <div class="kpi-value">$226.8K</div>
+        <div class="kpi-yoy positive">+61.8% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Conversions</div>
+        <div class="kpi-value">829</div>
+        <div class="kpi-yoy positive">+130.1% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ad Spend</div>
+        <div class="kpi-value">$45.1K</div>
+        <div class="kpi-yoy negative">+74.6% YoY</div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Performance Metrics — February 2026 vs 2025</h2>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-cell">
+          <div class="label">Impressions</div>
+          <div class="current">6714.0K</div>
+          <div class="previous">vs 4755.1K</div>
+          <div class="yoy positive">+41.2%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Clicks</div>
+          <div class="current">84.5K</div>
+          <div class="previous">vs 38.7K</div>
+          <div class="yoy positive">+118.3%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">CTR</div>
+          <div class="current">1.3%</div>
+          <div class="previous">vs 0.8%</div>
+          <div class="yoy positive">+54.6%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Avg CPC</div>
+          <div class="current">$0.53</div>
+          <div class="previous">vs $0.67</div>
+          <div class="yoy positive">-20.0%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Conv. Rate</div>
+          <div class="current">1.0%</div>
+          <div class="previous">vs 0.9%</div>
+          <div class="yoy positive">+5.4%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">Cost / Conv.</div>
+          <div class="current">$54.48</div>
+          <div class="previous">vs $71.83</div>
+          <div class="yoy positive">-24.1%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">AOV</div>
+          <div class="current">$273.77</div>
+          <div class="previous">vs $389.53</div>
+          <div class="yoy negative">-29.7%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="label">ROAS</div>
+          <div class="current">5.03x</div>
+          <div class="previous">vs 5.42x</div>
+          <div class="yoy negative">-7.3%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>Revenue vs Ad Spend</h3>
+        <div class="chart-container">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Conversions</h3>
+        <div class="chart-container">
+          <canvas id="conversionsChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Products (Tabbed) -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Top 5 Products</h2>
+      </div>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'products-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'products-conversions')">By Conversions</button>
+        </div>
+        <div id="products-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Cost</th>
+                <th class="number">ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td class="product-name" title="48 Wholesale Peeled Snacks Organic Dried Mango - 1.23 oz.">48 Wholesale Peeled Snacks Organic Dried Mango - 1.23 oz.</td>
+                <td class="number">$8,063.18</td>
+                <td class="number">1.0</td>
+                <td class="number">$43.62</td>
+                <td class="number">184.85x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="60 Wholesale Mens One Size Thermal Bottom Assorted Colors">60 Wholesale Mens One Size Thermal Bottom Assorted Colors</td>
+                <td class="number">$3,907.61</td>
+                <td class="number">1.0</td>
+                <td class="number">$6.44</td>
+                <td class="number">606.77x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="24 Wholesale Slide Waterproof Smartwatch Sl700">24 Wholesale Slide Waterproof Smartwatch Sl700</td>
+                <td class="number">$2,309.54</td>
+                <td class="number">1.0</td>
+                <td class="number">$44.48</td>
+                <td class="number">51.92x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="2000 Wholesale 2.25 Inch Color Pls Easter Eggs (2000/cs)">2000 Wholesale 2.25 Inch Color Pls Easter Eggs (2000/cs)</td>
+                <td class="number">$2,308.41</td>
+                <td class="number">4.5</td>
+                <td class="number">$206.38</td>
+                <td class="number">11.19x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="864 Wholesale 2 Neon Whistle Necklace">864 Wholesale 2 Neon Whistle Necklace</td>
+                <td class="number">$1,837.05</td>
+                <td class="number">2.0</td>
+                <td class="number">$113.82</td>
+                <td class="number">16.14x</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="products-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Cost</th>
+                <th class="number">ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td class="product-name" title="20 Wholesale 10 Smart Poly Learning Mats 12 inch x17 inch, DoublE-Sided, Us Map Basic 95000">20 Wholesale 10 Smart Poly Learning Mats 12 inch x17 inch, DoublE-Sided, Us Map Basic 95000</td>
+                <td class="number">11.0</td>
+                <td class="number">$1,623.96</td>
+                <td class="number">$300.60</td>
+                <td class="number">5.40x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="2000 Wholesale 2.25 Inch Color Pls Easter Eggs (2000/cs)">2000 Wholesale 2.25 Inch Color Pls Easter Eggs (2000/cs)</td>
+                <td class="number">4.5</td>
+                <td class="number">$2,308.41</td>
+                <td class="number">$206.38</td>
+                <td class="number">11.19x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="864 Wholesale 2 Neon Whistle Necklace">864 Wholesale 2 Neon Whistle Necklace</td>
+                <td class="number">2.0</td>
+                <td class="number">$1,837.05</td>
+                <td class="number">$113.82</td>
+                <td class="number">16.14x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="25 Wholesale 9.5 Regulation Basketball">25 Wholesale 9.5 Regulation Basketball</td>
+                <td class="number">2.0</td>
+                <td class="number">$1,775.86</td>
+                <td class="number">$146.35</td>
+                <td class="number">12.13x</td>
+              </tr>
+              
+              <tr>
+                <td class="product-name" title="144 Wholesale Yacht Smith Non Slip Gripper Bottom Mens Winter Thermal Slipper Tube Socks Size 10-13">144 Wholesale Yacht Smith Non Slip Gripper Bottom Mens Winter Thermal Slipper Tube Socks Size 10-13</td>
+                <td class="number">1.5</td>
+                <td class="number">$1,610.55</td>
+                <td class="number">$11.89</td>
+                <td class="number">135.45x</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Top Search Terms (Tabbed) -->
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Top 5 Search Terms (Non-Branded)</h2>
+      </div>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>wholesalesockdeals</td>
+                <td class="number">$1,205.84</td>
+                <td class="number">1.0</td>
+                <td class="number">5</td>
+                <td class="number">$6.39</td>
+              </tr>
+              
+              <tr>
+                <td>discounted winter gear</td>
+                <td class="number">$973.37</td>
+                <td class="number">1.0</td>
+                <td class="number">1</td>
+                <td class="number">$6.56</td>
+              </tr>
+              
+              <tr>
+                <td>8 inch plastic easter eggs</td>
+                <td class="number">$905.17</td>
+                <td class="number">0.9</td>
+                <td class="number">1</td>
+                <td class="number">$1.89</td>
+              </tr>
+              
+              <tr>
+                <td>bud vases bulk</td>
+                <td class="number">$841.85</td>
+                <td class="number">1.0</td>
+                <td class="number">1</td>
+                <td class="number">$0.44</td>
+              </tr>
+              
+              <tr>
+                <td>drones</td>
+                <td class="number">$782.13</td>
+                <td class="number">2.0</td>
+                <td class="number">1</td>
+                <td class="number">$3.12</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>suéter</td>
+                <td class="number">2.2</td>
+                <td class="number">$608.84</td>
+                <td class="number">1</td>
+                <td class="number">$24.86</td>
+              </tr>
+              
+              <tr>
+                <td>drones</td>
+                <td class="number">2.0</td>
+                <td class="number">$782.13</td>
+                <td class="number">1</td>
+                <td class="number">$3.12</td>
+              </tr>
+              
+              <tr>
+                <td>bulk cotton panties</td>
+                <td class="number">2.0</td>
+                <td class="number">$572.74</td>
+                <td class="number">2</td>
+                <td class="number">$0.40</td>
+              </tr>
+              
+              <tr>
+                <td>bulk socks</td>
+                <td class="number">1.5</td>
+                <td class="number">$731.13</td>
+                <td class="number">16</td>
+                <td class="number">$31.77</td>
+              </tr>
+              
+              <tr>
+                <td>wholesalesockdeals</td>
+                <td class="number">1.0</td>
+                <td class="number">$1,205.84</td>
+                <td class="number">5</td>
+                <td class="number">$6.39</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Report generated March 4, 2026</p>
+      <p>All metrics use conversion-time attribution &bull; <span class="brand">Easton Digital</span></p>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    function switchTab(btn, tabId) {
+      const group = btn.closest('.section');
+      group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      group.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Charts
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    Chart.defaults.color = '#888888';
+
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Feb 2025', 'Feb 2026'],
+        datasets: [
+          {
+            label: 'Revenue',
+            data: [140232.49, 226830.2],
+            backgroundColor: '#00FFB1',
+            borderRadius: 4,
+          },
+          {
+            label: 'Ad Spend',
+            data: [25857.84365, 45139.581469],
+            backgroundColor: '#1a1a1a',
+            borderRadius: 4,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect', font: { size: 12 } } }
+        },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 12 } } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('conversionsChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Feb 2025', 'Feb 2026'],
+        datasets: [{
+          label: 'Conversions',
+          data: [360, 828.531222],
+          backgroundColor: ['#2d2d2d', '#00FFB1'],
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 12 } } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
