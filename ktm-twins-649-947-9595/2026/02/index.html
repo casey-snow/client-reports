@@ -8,23 +8,25 @@
   <style>
     :root {
       --brand-black: #000000;
-      --brand-dark: #1a1a1a;
-      --brand-grey: #2d2d2d;
+      --brand-dark: #111111;
+      --brand-grey: #1a1a1a;
       --brand-accent: #00FFB1;
-      --text-primary: #111111;
-      --text-secondary: #555555;
-      --text-muted: #888888;
-      --bg-light: #f8f8f8;
-      --border: #e5e5e5;
-      --positive: #059669;
-      --negative: #dc2626;
+      --text-primary: #f0f0f0;
+      --text-secondary: #aaaaaa;
+      --text-muted: #777777;
+      --bg-page: #0a0a0a;
+      --bg-card: #141414;
+      --bg-elevated: #1c1c1c;
+      --border: #2a2a2a;
+      --positive: #00FFB1;
+      --negative: #ff4d4d;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: white;
+      background: var(--bg-page);
       color: var(--text-primary);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -80,18 +82,19 @@
       margin-bottom: 32px;
     }
     .kpi-card {
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 24px 20px;
       text-align: center;
     }
     .kpi-card.primary {
-      background: var(--brand-dark);
-      color: white;
+      background: var(--bg-elevated);
+      border-color: var(--brand-accent);
     }
     .kpi-card.primary .kpi-label { color: var(--brand-accent); }
     .kpi-card.primary .kpi-value { color: white; }
-    .kpi-card.primary .kpi-goal { color: rgba(255,255,255,0.5); }
+    .kpi-card.primary .kpi-goal { color: var(--text-muted); }
     .kpi-label {
       font-size: 11px;
       font-weight: 600;
@@ -107,6 +110,7 @@
       line-height: 1.1;
       font-variant-numeric: tabular-nums;
     }
+    .kpi-card .kpi-value { color: var(--text-primary); }
     .kpi-yoy {
       font-size: 13px;
       font-weight: 600;
@@ -129,7 +133,7 @@
       gap: 12px;
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 2px solid var(--brand-black);
+      border-bottom: 2px solid var(--border);
     }
     .section-header h2 {
       font-size: 16px;
@@ -155,7 +159,7 @@
       overflow: hidden;
     }
     .metric-cell {
-      background: white;
+      background: var(--bg-card);
       padding: 20px;
       min-height: 100px;
     }
@@ -190,7 +194,8 @@
       margin-bottom: 32px;
     }
     .chart-card {
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 24px;
     }
@@ -214,7 +219,7 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--text-muted);
-      background: var(--bg-light);
+      background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-bottom: none;
       border-radius: 8px 8px 0 0;
@@ -223,8 +228,8 @@
     }
     .tab-btn:hover { color: var(--text-primary); }
     .tab-btn.active {
-      color: var(--text-primary);
-      background: white;
+      color: var(--brand-accent);
+      background: var(--bg-card);
       border-color: var(--border);
     }
     .tab-btn + .tab-btn { margin-left: -1px; }
@@ -256,10 +261,11 @@
       padding: 14px 16px;
       border-bottom: 1px solid var(--border);
       color: var(--text-primary);
+      background: var(--bg-card);
       font-size: 14px;
     }
     .data-table tr:last-child td { border-bottom: none; }
-    .data-table tr:hover td { background: var(--bg-light); }
+    .data-table tr:hover td { background: var(--bg-elevated); }
     .data-table .product-name {
       max-width: 280px;
       white-space: nowrap;
@@ -277,7 +283,8 @@
       text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
     }
 
@@ -288,6 +295,7 @@
       border-top: 1px solid var(--border);
       text-align: center;
     }
+    .footer p { color: var(--text-muted); }
     .footer p {
       font-size: 12px;
       color: var(--text-muted);
@@ -342,18 +350,18 @@
     <div class="kpi-hero">
       <div class="kpi-card primary">
         <div class="kpi-label">ROAS</div>
-        <div class="kpi-value">12.95x</div>
+        <div class="kpi-value">12.96x</div>
         <div class="kpi-goal">Goal: ROAS ≥ 10.0</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Revenue</div>
-        <div class="kpi-value">$138.2K</div>
-        <div class="kpi-yoy positive">+44.6% YoY</div>
+        <div class="kpi-value">$138.3K</div>
+        <div class="kpi-yoy positive">+44.7% YoY</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Conversions</div>
-        <div class="kpi-value">643</div>
-        <div class="kpi-yoy positive">+41.9% YoY</div>
+        <div class="kpi-value">644</div>
+        <div class="kpi-yoy positive">+42.2% YoY</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Ad Spend</div>
@@ -397,23 +405,23 @@
           <div class="label">Conv. Rate</div>
           <div class="current">3.1%</div>
           <div class="previous">vs 3.4%</div>
-          <div class="yoy negative">-9.6%</div>
+          <div class="yoy negative">-9.5%</div>
         </div>
         <div class="metric-cell">
           <div class="label">Cost / Conv.</div>
-          <div class="current">$16.60</div>
+          <div class="current">$16.57</div>
           <div class="previous">vs $18.11</div>
-          <div class="yoy positive">-8.3%</div>
+          <div class="yoy positive">-8.5%</div>
         </div>
         <div class="metric-cell">
           <div class="label">AOV</div>
-          <div class="current">$214.99</div>
+          <div class="current">$214.73</div>
           <div class="previous">vs $210.98</div>
-          <div class="yoy positive">+1.9%</div>
+          <div class="yoy positive">+1.8%</div>
         </div>
         <div class="metric-cell">
           <div class="label">ROAS</div>
-          <div class="current">12.95x</div>
+          <div class="current">12.96x</div>
           <div class="previous">vs 11.65x</div>
           <div class="yoy positive">+11.2%</div>
         </div>
@@ -463,10 +471,10 @@
               
               <tr>
                 <td class="product-name" title="KTM Tech 7 MX Boots KTM Footwear - KTM Twins - Footwear">KTM Tech 7 MX Boots KTM Footwear - KTM Twins - Footwear</td>
-                <td class="number">$10,144.34</td>
-                <td class="number">34.3</td>
+                <td class="number">$10,518.83</td>
+                <td class="number">35.3</td>
                 <td class="number">$365.65</td>
-                <td class="number">27.74x</td>
+                <td class="number">28.77x</td>
               </tr>
               
               <tr>
@@ -519,10 +527,10 @@
               
               <tr>
                 <td class="product-name" title="KTM Tech 7 MX Boots KTM Footwear - KTM Twins - Footwear">KTM Tech 7 MX Boots KTM Footwear - KTM Twins - Footwear</td>
-                <td class="number">34.3</td>
-                <td class="number">$10,144.34</td>
+                <td class="number">35.3</td>
+                <td class="number">$10,518.83</td>
                 <td class="number">$365.65</td>
-                <td class="number">27.74x</td>
+                <td class="number">28.77x</td>
               </tr>
               
               <tr>
@@ -692,9 +700,113 @@
       
     </div>
 
+    <!-- PMax Search Term Categories -->
+    
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Performance Max Search Categories</h2>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th class="number">Impressions</th>
+            <th class="number">Clicks</th>
+            <th class="number">Conv.</th>
+            <th class="number">Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td></td>
+            <td class="number">223.0K</td>
+            <td class="number">3.2K</td>
+            <td class="number">64.5</td>
+            <td class="number">$14,211.04</td>
+          </tr>
+          
+          <tr>
+            <td>alpinestars tech 7</td>
+            <td class="number">15.2K</td>
+            <td class="number">391</td>
+            <td class="number">14.5</td>
+            <td class="number">$4,596.52</td>
+          </tr>
+          
+          <tr>
+            <td>ktm rear caliper guard</td>
+            <td class="number">715</td>
+            <td class="number">25</td>
+            <td class="number">2.8</td>
+            <td class="number">$3,730.85</td>
+          </tr>
+          
+          <tr>
+            <td>ktm powerparts</td>
+            <td class="number">2.3K</td>
+            <td class="number">252</td>
+            <td class="number">6.1</td>
+            <td class="number">$2,306.12</td>
+          </tr>
+          
+          <tr>
+            <td>ktm oem parts</td>
+            <td class="number">984</td>
+            <td class="number">112</td>
+            <td class="number">2.1</td>
+            <td class="number">$1,805.65</td>
+          </tr>
+          
+          <tr>
+            <td>ktm mirrors</td>
+            <td class="number">889</td>
+            <td class="number">40</td>
+            <td class="number">7.1</td>
+            <td class="number">$1,527.67</td>
+          </tr>
+          
+          <tr>
+            <td>ktm 390 enduro r plastics</td>
+            <td class="number">743</td>
+            <td class="number">45</td>
+            <td class="number">5.6</td>
+            <td class="number">$1,329.27</td>
+          </tr>
+          
+          <tr>
+            <td>ktm parts</td>
+            <td class="number">1.8K</td>
+            <td class="number">285</td>
+            <td class="number">6.1</td>
+            <td class="number">$1,244.35</td>
+          </tr>
+          
+          <tr>
+            <td>ktm 890 smt luggage</td>
+            <td class="number">4.9K</td>
+            <td class="number">114</td>
+            <td class="number">3.9</td>
+            <td class="number">$1,056.59</td>
+          </tr>
+          
+          <tr>
+            <td>motorcycle boots</td>
+            <td class="number">947</td>
+            <td class="number">17</td>
+            <td class="number">2.9</td>
+            <td class="number">$1,027.26</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+
     <!-- Footer -->
     <div class="footer">
-      <p>Report generated March 5, 2026</p>
+      <p>Report generated March 6, 2026</p>
       <p>All metrics use conversion-time attribution &bull; <span class="brand">Easton Digital</span></p>
     </div>
   </div>
@@ -711,7 +823,7 @@
 
     // Charts
     Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    Chart.defaults.color = '#888888';
+    Chart.defaults.color = '#777777';
 
     new Chart(document.getElementById('revenueChart'), {
       type: 'bar',
@@ -720,7 +832,7 @@
         datasets: [
           {
             label: 'Revenue',
-            data: [95572.49, 138237.259999],
+            data: [95572.49, 138284.489999],
             backgroundColor: '#00FFB1',
             borderRadius: 4,
           },
@@ -739,7 +851,7 @@
           legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect', font: { size: 12 } } }
         },
         scales: {
-          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
+          y: { beginAtZero: true, grid: { color: '#2a2a2a' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
           x: { grid: { display: false }, ticks: { font: { size: 12 } } }
         }
       }
@@ -751,7 +863,7 @@
         labels: ['Feb 2025', 'Feb 2026'],
         datasets: [{
           label: 'Conversions',
-          data: [453, 643],
+          data: [453, 644],
           backgroundColor: ['#2d2d2d', '#00FFB1'],
           borderRadius: 4,
         }]
@@ -761,7 +873,7 @@
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { font: { size: 11 } } },
+          y: { beginAtZero: true, grid: { color: '#2a2a2a' }, ticks: { font: { size: 11 } } },
           x: { grid: { display: false }, ticks: { font: { size: 12 } } }
         }
       }

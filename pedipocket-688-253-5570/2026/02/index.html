@@ -8,23 +8,25 @@
   <style>
     :root {
       --brand-black: #000000;
-      --brand-dark: #1a1a1a;
-      --brand-grey: #2d2d2d;
+      --brand-dark: #111111;
+      --brand-grey: #1a1a1a;
       --brand-accent: #00FFB1;
-      --text-primary: #111111;
-      --text-secondary: #555555;
-      --text-muted: #888888;
-      --bg-light: #f8f8f8;
-      --border: #e5e5e5;
-      --positive: #059669;
-      --negative: #dc2626;
+      --text-primary: #f0f0f0;
+      --text-secondary: #aaaaaa;
+      --text-muted: #777777;
+      --bg-page: #0a0a0a;
+      --bg-card: #141414;
+      --bg-elevated: #1c1c1c;
+      --border: #2a2a2a;
+      --positive: #00FFB1;
+      --negative: #ff4d4d;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: white;
+      background: var(--bg-page);
       color: var(--text-primary);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -80,18 +82,19 @@
       margin-bottom: 32px;
     }
     .kpi-card {
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 24px 20px;
       text-align: center;
     }
     .kpi-card.primary {
-      background: var(--brand-dark);
-      color: white;
+      background: var(--bg-elevated);
+      border-color: var(--brand-accent);
     }
     .kpi-card.primary .kpi-label { color: var(--brand-accent); }
     .kpi-card.primary .kpi-value { color: white; }
-    .kpi-card.primary .kpi-goal { color: rgba(255,255,255,0.5); }
+    .kpi-card.primary .kpi-goal { color: var(--text-muted); }
     .kpi-label {
       font-size: 11px;
       font-weight: 600;
@@ -107,6 +110,7 @@
       line-height: 1.1;
       font-variant-numeric: tabular-nums;
     }
+    .kpi-card .kpi-value { color: var(--text-primary); }
     .kpi-yoy {
       font-size: 13px;
       font-weight: 600;
@@ -129,7 +133,7 @@
       gap: 12px;
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 2px solid var(--brand-black);
+      border-bottom: 2px solid var(--border);
     }
     .section-header h2 {
       font-size: 16px;
@@ -155,7 +159,7 @@
       overflow: hidden;
     }
     .metric-cell {
-      background: white;
+      background: var(--bg-card);
       padding: 20px;
       min-height: 100px;
     }
@@ -190,7 +194,8 @@
       margin-bottom: 32px;
     }
     .chart-card {
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 24px;
     }
@@ -214,7 +219,7 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--text-muted);
-      background: var(--bg-light);
+      background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-bottom: none;
       border-radius: 8px 8px 0 0;
@@ -223,8 +228,8 @@
     }
     .tab-btn:hover { color: var(--text-primary); }
     .tab-btn.active {
-      color: var(--text-primary);
-      background: white;
+      color: var(--brand-accent);
+      background: var(--bg-card);
       border-color: var(--border);
     }
     .tab-btn + .tab-btn { margin-left: -1px; }
@@ -256,10 +261,11 @@
       padding: 14px 16px;
       border-bottom: 1px solid var(--border);
       color: var(--text-primary);
+      background: var(--bg-card);
       font-size: 14px;
     }
     .data-table tr:last-child td { border-bottom: none; }
-    .data-table tr:hover td { background: var(--bg-light); }
+    .data-table tr:hover td { background: var(--bg-elevated); }
     .data-table .product-name {
       max-width: 280px;
       white-space: nowrap;
@@ -277,7 +283,8 @@
       text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      background: var(--bg-light);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 8px;
     }
 
@@ -288,6 +295,7 @@
       border-top: 1px solid var(--border);
       text-align: center;
     }
+    .footer p { color: var(--text-muted); }
     .footer p {
       font-size: 12px;
       color: var(--text-muted);
@@ -573,9 +581,113 @@
       <div class="empty-state">No search term data available for this period</div>
     </div>
 
+    <!-- PMax Search Term Categories -->
+    
+    <div class="section">
+      <div class="section-header">
+        <div class="accent-bar"></div>
+        <h2>Performance Max Search Categories</h2>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th class="number">Impressions</th>
+            <th class="number">Clicks</th>
+            <th class="number">Conv.</th>
+            <th class="number">Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>pedi pocket blanket</td>
+            <td class="number">2.4K</td>
+            <td class="number">46</td>
+            <td class="number">4.0</td>
+            <td class="number">$525.48</td>
+          </tr>
+          
+          <tr>
+            <td>blanket with foot pocket</td>
+            <td class="number">11.5K</td>
+            <td class="number">146</td>
+            <td class="number">3.0</td>
+            <td class="number">$286.93</td>
+          </tr>
+          
+          <tr>
+            <td>personal heated blanket</td>
+            <td class="number">123</td>
+            <td class="number">2</td>
+            <td class="number">1.0</td>
+            <td class="number">$141.84</td>
+          </tr>
+          
+          <tr>
+            <td>heated blanket with foot pocket</td>
+            <td class="number">2.7K</td>
+            <td class="number">33</td>
+            <td class="number">1.0</td>
+            <td class="number">$130.00</td>
+          </tr>
+          
+          <tr>
+            <td>cuddl duds blanket with foot pocket</td>
+            <td class="number">6.3K</td>
+            <td class="number">69</td>
+            <td class="number">1.0</td>
+            <td class="number">$129.31</td>
+          </tr>
+          
+          <tr>
+            <td>feet warmers</td>
+            <td class="number">31</td>
+            <td class="number">2</td>
+            <td class="number">1.0</td>
+            <td class="number">$84.56</td>
+          </tr>
+          
+          <tr>
+            <td></td>
+            <td class="number">21.9K</td>
+            <td class="number">178</td>
+            <td class="number">0.0</td>
+            <td class="number">$0.00</td>
+          </tr>
+          
+          <tr>
+            <td>etsy blankets</td>
+            <td class="number">9</td>
+            <td class="number">0</td>
+            <td class="number">0.0</td>
+            <td class="number">$0.00</td>
+          </tr>
+          
+          <tr>
+            <td>cuddl duds blanket</td>
+            <td class="number">74</td>
+            <td class="number">0</td>
+            <td class="number">0.0</td>
+            <td class="number">$0.00</td>
+          </tr>
+          
+          <tr>
+            <td>airline blanket</td>
+            <td class="number">45</td>
+            <td class="number">0</td>
+            <td class="number">0.0</td>
+            <td class="number">$0.00</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+
     <!-- Footer -->
     <div class="footer">
-      <p>Report generated March 5, 2026</p>
+      <p>Report generated March 6, 2026</p>
       <p>All metrics use conversion-time attribution &bull; <span class="brand">Easton Digital</span></p>
     </div>
   </div>
@@ -592,7 +704,7 @@
 
     // Charts
     Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    Chart.defaults.color = '#888888';
+    Chart.defaults.color = '#777777';
 
     new Chart(document.getElementById('revenueChart'), {
       type: 'bar',
@@ -620,7 +732,7 @@
           legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect', font: { size: 12 } } }
         },
         scales: {
-          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
+          y: { beginAtZero: true, grid: { color: '#2a2a2a' }, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } } },
           x: { grid: { display: false }, ticks: { font: { size: 12 } } }
         }
       }
@@ -642,7 +754,7 @@
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-          y: { beginAtZero: true, grid: { color: '#e5e5e5' }, ticks: { font: { size: 11 } } },
+          y: { beginAtZero: true, grid: { color: '#2a2a2a' }, ticks: { font: { size: 11 } } },
           x: { grid: { display: false }, ticks: { font: { size: 12 } } }
         }
       }
