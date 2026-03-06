@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>real estate sign posts (PMax)</td>
+                <td class="number">$3,075.02</td>
+                <td class="number">10.0</td>
+                <td class="number">184</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$2,658.39</td>
+                <td class="number">6.0</td>
+                <td class="number">138</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>real estate posts (PMax)</td>
+                <td class="number">$668.27</td>
+                <td class="number">2.0</td>
+                <td class="number">16</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>real estate signs (PMax)</td>
+                <td class="number">$413.95</td>
+                <td class="number">2.0</td>
+                <td class="number">36</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>colonial post real estate sign (PMax)</td>
+                <td class="number">$251.88</td>
+                <td class="number">1.0</td>
+                <td class="number">4</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>real estate sign posts (PMax)</td>
+                <td class="number">10.0</td>
+                <td class="number">$3,075.02</td>
+                <td class="number">184</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">6.0</td>
+                <td class="number">$2,658.39</td>
+                <td class="number">138</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>real estate posts (PMax)</td>
+                <td class="number">2.0</td>
+                <td class="number">$668.27</td>
+                <td class="number">16</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>real estate signs (PMax)</td>
+                <td class="number">2.0</td>
+                <td class="number">$413.95</td>
+                <td class="number">36</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>colonial post real estate sign (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$251.88</td>
+                <td class="number">4</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>real estate sign posts</td>
-            <td class="number">14.1K</td>
-            <td class="number">184</td>
-            <td class="number">10.0</td>
-            <td class="number">$3,075.02</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">15.5K</td>
-            <td class="number">138</td>
-            <td class="number">6.0</td>
-            <td class="number">$2,658.39</td>
-          </tr>
-          
-          <tr>
-            <td>real estate posts</td>
-            <td class="number">1.6K</td>
-            <td class="number">16</td>
-            <td class="number">2.0</td>
-            <td class="number">$668.27</td>
-          </tr>
-          
-          <tr>
-            <td>real estate signs</td>
-            <td class="number">5.1K</td>
-            <td class="number">36</td>
-            <td class="number">2.0</td>
-            <td class="number">$413.95</td>
-          </tr>
-          
-          <tr>
-            <td>colonial post real estate sign</td>
-            <td class="number">464</td>
-            <td class="number">4</td>
-            <td class="number">1.0</td>
-            <td class="number">$251.88</td>
-          </tr>
-          
-          <tr>
-            <td>durable real estate signs</td>
-            <td class="number">1.3K</td>
-            <td class="number">9</td>
-            <td class="number">1.0</td>
-            <td class="number">$115.49</td>
-          </tr>
-          
-          <tr>
-            <td>house for sale sign</td>
-            <td class="number">6.6K</td>
-            <td class="number">100</td>
-            <td class="number">1.0</td>
-            <td class="number">$89.99</td>
-          </tr>
-          
-          <tr>
-            <td>commercial sign posts</td>
-            <td class="number">21</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>rustic wooden sign posts</td>
-            <td class="number">1</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>real estate yard sign post</td>
-            <td class="number">5.2K</td>
-            <td class="number">32</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">

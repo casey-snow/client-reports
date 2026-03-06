@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$3,052.60</td>
+                <td class="number">14.5</td>
+                <td class="number">323</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>leather 3 ring binder (PMax)</td>
+                <td class="number">$794.96</td>
+                <td class="number">5.1</td>
+                <td class="number">92</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>mckinley leather portfolio (PMax)</td>
+                <td class="number">$607.33</td>
+                <td class="number">2.7</td>
+                <td class="number">18</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$597.00</td>
+                <td class="number">5.0</td>
+                <td class="number">171</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>3 ring binder portfolio (PMax)</td>
+                <td class="number">$258.00</td>
+                <td class="number">2.0</td>
+                <td class="number">34</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">14.5</td>
+                <td class="number">$3,052.60</td>
+                <td class="number">323</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>leather 3 ring binder (PMax)</td>
+                <td class="number">5.1</td>
+                <td class="number">$794.96</td>
+                <td class="number">92</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">5.0</td>
+                <td class="number">$597.00</td>
+                <td class="number">171</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>mckinley leather portfolio (PMax)</td>
+                <td class="number">2.7</td>
+                <td class="number">$607.33</td>
+                <td class="number">18</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>3 ring binder portfolio (PMax)</td>
+                <td class="number">2.0</td>
+                <td class="number">$258.00</td>
+                <td class="number">34</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td></td>
-            <td class="number">31.7K</td>
-            <td class="number">323</td>
-            <td class="number">14.5</td>
-            <td class="number">$3,052.60</td>
-          </tr>
-          
-          <tr>
-            <td>leather 3 ring binder</td>
-            <td class="number">7.6K</td>
-            <td class="number">92</td>
-            <td class="number">5.1</td>
-            <td class="number">$794.96</td>
-          </tr>
-          
-          <tr>
-            <td>mckinley leather portfolio</td>
-            <td class="number">522</td>
-            <td class="number">18</td>
-            <td class="number">2.7</td>
-            <td class="number">$607.33</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">18.9K</td>
-            <td class="number">171</td>
-            <td class="number">5.0</td>
-            <td class="number">$597.00</td>
-          </tr>
-          
-          <tr>
-            <td>3 ring binder portfolio</td>
-            <td class="number">2.1K</td>
-            <td class="number">34</td>
-            <td class="number">2.0</td>
-            <td class="number">$258.00</td>
-          </tr>
-          
-          <tr>
-            <td>leather 3 ring binder</td>
-            <td class="number">3.2K</td>
-            <td class="number">39</td>
-            <td class="number">2.0</td>
-            <td class="number">$248.00</td>
-          </tr>
-          
-          <tr>
-            <td>personalized leather binder</td>
-            <td class="number">1.1K</td>
-            <td class="number">18</td>
-            <td class="number">1.0</td>
-            <td class="number">$211.50</td>
-          </tr>
-          
-          <tr>
-            <td>leather scrapbook</td>
-            <td class="number">720</td>
-            <td class="number">10</td>
-            <td class="number">1.0</td>
-            <td class="number">$161.50</td>
-          </tr>
-          
-          <tr>
-            <td>black leather portfolio</td>
-            <td class="number">126</td>
-            <td class="number">3</td>
-            <td class="number">0.3</td>
-            <td class="number">$154.67</td>
-          </tr>
-          
-          <tr>
-            <td>leather organizers</td>
-            <td class="number">63</td>
-            <td class="number">3</td>
-            <td class="number">0.5</td>
-            <td class="number">$140.75</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">

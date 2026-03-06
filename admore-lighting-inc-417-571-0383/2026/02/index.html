@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$1,786.16</td>
+                <td class="number">8.0</td>
+                <td class="number">261</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>denali lights (PMax)</td>
+                <td class="number">$716.49</td>
+                <td class="number">1.5</td>
+                <td class="number">79</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>gs911 (PMax)</td>
+                <td class="number">$422.49</td>
+                <td class="number">1.0</td>
+                <td class="number">19</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$384.76</td>
+                <td class="number">2.0</td>
+                <td class="number">234</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>accelerometer brake light motorcycle (PMax)</td>
+                <td class="number">$223.05</td>
+                <td class="number">1.0</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">8.0</td>
+                <td class="number">$1,786.16</td>
+                <td class="number">261</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">2.0</td>
+                <td class="number">$384.76</td>
+                <td class="number">234</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>denali lights (PMax)</td>
+                <td class="number">1.5</td>
+                <td class="number">$716.49</td>
+                <td class="number">79</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>gs911 (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$422.49</td>
+                <td class="number">19</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>accelerometer brake light motorcycle (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$223.05</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td></td>
-            <td class="number">12.4K</td>
-            <td class="number">261</td>
-            <td class="number">8.0</td>
-            <td class="number">$1,786.16</td>
-          </tr>
-          
-          <tr>
-            <td>denali lights</td>
-            <td class="number">883</td>
-            <td class="number">79</td>
-            <td class="number">1.5</td>
-            <td class="number">$716.49</td>
-          </tr>
-          
-          <tr>
-            <td>gs911</td>
-            <td class="number">112</td>
-            <td class="number">19</td>
-            <td class="number">1.0</td>
-            <td class="number">$422.49</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">17.5K</td>
-            <td class="number">234</td>
-            <td class="number">2.0</td>
-            <td class="number">$384.76</td>
-          </tr>
-          
-          <tr>
-            <td>accelerometer brake light motorcycle</td>
-            <td class="number">12</td>
-            <td class="number">2</td>
-            <td class="number">1.0</td>
-            <td class="number">$223.05</td>
-          </tr>
-          
-          <tr>
-            <td>goldwing lighting</td>
-            <td class="number">107</td>
-            <td class="number">4</td>
-            <td class="number">0.6</td>
-            <td class="number">$163.98</td>
-          </tr>
-          
-          <tr>
-            <td>givi maxia 5 brake light</td>
-            <td class="number">183</td>
-            <td class="number">9</td>
-            <td class="number">1.0</td>
-            <td class="number">$160.29</td>
-          </tr>
-          
-          <tr>
-            <td>pathfinder led</td>
-            <td class="number">18</td>
-            <td class="number">5</td>
-            <td class="number">1.0</td>
-            <td class="number">$147.29</td>
-          </tr>
-          
-          <tr>
-            <td>denali soundbomb</td>
-            <td class="number">26</td>
-            <td class="number">4</td>
-            <td class="number">0.5</td>
-            <td class="number">$11.15</td>
-          </tr>
-          
-          <tr>
-            <td>hex ezcan</td>
-            <td class="number">193</td>
-            <td class="number">25</td>
-            <td class="number">1.0</td>
-            <td class="number">$10.75</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">

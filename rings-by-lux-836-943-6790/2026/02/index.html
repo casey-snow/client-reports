@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>rings by lux (PMax)</td>
+                <td class="number">$25,580.40</td>
+                <td class="number">77.9</td>
+                <td class="number">891</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$21,720.82</td>
+                <td class="number">63.6</td>
+                <td class="number">2.6K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$10,782.49</td>
+                <td class="number">34.9</td>
+                <td class="number">1.4K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>mens wedding bands (PMax)</td>
+                <td class="number">$9,523.76</td>
+                <td class="number">28.8</td>
+                <td class="number">1.8K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>rings by lux (PMax)</td>
+                <td class="number">$8,441.85</td>
+                <td class="number">25.3</td>
+                <td class="number">212</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>rings by lux (PMax)</td>
+                <td class="number">77.9</td>
+                <td class="number">$25,580.40</td>
+                <td class="number">891</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">63.6</td>
+                <td class="number">$21,720.82</td>
+                <td class="number">2.6K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">34.9</td>
+                <td class="number">$10,782.49</td>
+                <td class="number">1.4K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>mens wedding bands (PMax)</td>
+                <td class="number">28.8</td>
+                <td class="number">$9,523.76</td>
+                <td class="number">1.8K</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>rings by lux (PMax)</td>
+                <td class="number">25.3</td>
+                <td class="number">$8,441.85</td>
+                <td class="number">212</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>rings by lux</td>
-            <td class="number">49.4K</td>
-            <td class="number">891</td>
-            <td class="number">77.9</td>
-            <td class="number">$25,580.40</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">285.4K</td>
-            <td class="number">2.6K</td>
-            <td class="number">63.6</td>
-            <td class="number">$21,720.82</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">175.4K</td>
-            <td class="number">1.4K</td>
-            <td class="number">34.9</td>
-            <td class="number">$10,782.49</td>
-          </tr>
-          
-          <tr>
-            <td>mens wedding bands</td>
-            <td class="number">140.0K</td>
-            <td class="number">1.8K</td>
-            <td class="number">28.8</td>
-            <td class="number">$9,523.76</td>
-          </tr>
-          
-          <tr>
-            <td>rings by lux</td>
-            <td class="number">27.8K</td>
-            <td class="number">212</td>
-            <td class="number">25.3</td>
-            <td class="number">$8,441.85</td>
-          </tr>
-          
-          <tr>
-            <td>mens rings</td>
-            <td class="number">72.4K</td>
-            <td class="number">836</td>
-            <td class="number">19.6</td>
-            <td class="number">$5,839.38</td>
-          </tr>
-          
-          <tr>
-            <td>whiskey barrel wedding band</td>
-            <td class="number">21.4K</td>
-            <td class="number">373</td>
-            <td class="number">17.6</td>
-            <td class="number">$5,557.59</td>
-          </tr>
-          
-          <tr>
-            <td>mens wedding rings</td>
-            <td class="number">76.4K</td>
-            <td class="number">1.1K</td>
-            <td class="number">13.8</td>
-            <td class="number">$4,392.85</td>
-          </tr>
-          
-          <tr>
-            <td>antler rings</td>
-            <td class="number">31.0K</td>
-            <td class="number">396</td>
-            <td class="number">14.0</td>
-            <td class="number">$4,228.87</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">52.7K</td>
-            <td class="number">419</td>
-            <td class="number">10.5</td>
-            <td class="number">$3,696.66</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">

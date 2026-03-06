@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>bike rack lights (PMax)</td>
+                <td class="number">$852.01</td>
+                <td class="number">5.1</td>
+                <td class="number">270</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>kuat bike rack license plate holder (PMax)</td>
+                <td class="number">$221.60</td>
+                <td class="number">1.0</td>
+                <td class="number">46</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>brake lights for bike rack (PMax)</td>
+                <td class="number">$159.00</td>
+                <td class="number">1.0</td>
+                <td class="number">8</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">$41.60</td>
+                <td class="number">0.8</td>
+                <td class="number">248</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>lights for trailer hitch (PMax)</td>
+                <td class="number">$0.00</td>
+                <td class="number">0.0</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>bike rack lights (PMax)</td>
+                <td class="number">5.1</td>
+                <td class="number">$852.01</td>
+                <td class="number">270</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>kuat bike rack license plate holder (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$221.60</td>
+                <td class="number">46</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>brake lights for bike rack (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$159.00</td>
+                <td class="number">8</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td> (PMax)</td>
+                <td class="number">0.8</td>
+                <td class="number">$41.60</td>
+                <td class="number">248</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>lights for trailer hitch (PMax)</td>
+                <td class="number">0.0</td>
+                <td class="number">$0.00</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>bike rack lights</td>
-            <td class="number">6.0K</td>
-            <td class="number">270</td>
-            <td class="number">5.1</td>
-            <td class="number">$852.01</td>
-          </tr>
-          
-          <tr>
-            <td>kuat bike rack license plate holder</td>
-            <td class="number">889</td>
-            <td class="number">46</td>
-            <td class="number">1.0</td>
-            <td class="number">$221.60</td>
-          </tr>
-          
-          <tr>
-            <td>brake lights for bike rack</td>
-            <td class="number">225</td>
-            <td class="number">8</td>
-            <td class="number">1.0</td>
-            <td class="number">$159.00</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">13.7K</td>
-            <td class="number">248</td>
-            <td class="number">0.8</td>
-            <td class="number">$41.60</td>
-          </tr>
-          
-          <tr>
-            <td>lights for trailer hitch</td>
-            <td class="number">48</td>
-            <td class="number">2</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>removable trailer lights</td>
-            <td class="number">1</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>kody lights</td>
-            <td class="number">24</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>curt 53201 led lights</td>
-            <td class="number">12</td>
-            <td class="number">1</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>lantern flashlights</td>
-            <td class="number">21</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>kuat bike rack light kit</td>
-            <td class="number">105</td>
-            <td class="number">1</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">

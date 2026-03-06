@@ -576,114 +576,129 @@
     <div class="section">
       <div class="section-header">
         <div class="accent-bar"></div>
-        <h2>Top 5 Search Terms (Non-Branded)</h2>
+        <h2>Top 5 Search Terms</h2>
       </div>
-      <div class="empty-state">No search term data available for this period</div>
-    </div>
-
-    <!-- PMax Search Term Categories -->
-    
-    <div class="section">
-      <div class="section-header">
-        <div class="accent-bar"></div>
-        <h2>Performance Max Search Categories</h2>
+      
+      <div class="tab-group">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(this, 'terms-revenue')">By Revenue</button>
+          <button class="tab-btn" onclick="switchTab(this, 'terms-conversions')">By Conversions</button>
+        </div>
+        <div id="terms-revenue" class="tab-content active">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Revenue</th>
+                <th class="number">Conv.</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>pedi pocket blanket (PMax)</td>
+                <td class="number">$525.48</td>
+                <td class="number">4.0</td>
+                <td class="number">46</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>blanket with foot pocket (PMax)</td>
+                <td class="number">$286.93</td>
+                <td class="number">3.0</td>
+                <td class="number">146</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>personal heated blanket (PMax)</td>
+                <td class="number">$141.84</td>
+                <td class="number">1.0</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>heated blanket with foot pocket (PMax)</td>
+                <td class="number">$130.00</td>
+                <td class="number">1.0</td>
+                <td class="number">33</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>cuddl duds blanket with foot pocket (PMax)</td>
+                <td class="number">$129.31</td>
+                <td class="number">1.0</td>
+                <td class="number">69</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div id="terms-conversions" class="tab-content">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Search Term</th>
+                <th class="number">Conv.</th>
+                <th class="number">Revenue</th>
+                <th class="number">Clicks</th>
+                <th class="number">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>pedi pocket blanket (PMax)</td>
+                <td class="number">4.0</td>
+                <td class="number">$525.48</td>
+                <td class="number">46</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>blanket with foot pocket (PMax)</td>
+                <td class="number">3.0</td>
+                <td class="number">$286.93</td>
+                <td class="number">146</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>personal heated blanket (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$141.84</td>
+                <td class="number">2</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>heated blanket with foot pocket (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$130.00</td>
+                <td class="number">33</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+              <tr>
+                <td>cuddl duds blanket with foot pocket (PMax)</td>
+                <td class="number">1.0</td>
+                <td class="number">$129.31</td>
+                <td class="number">69</td>
+                <td class="number">$0.00</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th class="number">Impressions</th>
-            <th class="number">Clicks</th>
-            <th class="number">Conv.</th>
-            <th class="number">Revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>pedi pocket blanket</td>
-            <td class="number">2.4K</td>
-            <td class="number">46</td>
-            <td class="number">4.0</td>
-            <td class="number">$525.48</td>
-          </tr>
-          
-          <tr>
-            <td>blanket with foot pocket</td>
-            <td class="number">11.5K</td>
-            <td class="number">146</td>
-            <td class="number">3.0</td>
-            <td class="number">$286.93</td>
-          </tr>
-          
-          <tr>
-            <td>personal heated blanket</td>
-            <td class="number">123</td>
-            <td class="number">2</td>
-            <td class="number">1.0</td>
-            <td class="number">$141.84</td>
-          </tr>
-          
-          <tr>
-            <td>heated blanket with foot pocket</td>
-            <td class="number">2.7K</td>
-            <td class="number">33</td>
-            <td class="number">1.0</td>
-            <td class="number">$130.00</td>
-          </tr>
-          
-          <tr>
-            <td>cuddl duds blanket with foot pocket</td>
-            <td class="number">6.3K</td>
-            <td class="number">69</td>
-            <td class="number">1.0</td>
-            <td class="number">$129.31</td>
-          </tr>
-          
-          <tr>
-            <td>feet warmers</td>
-            <td class="number">31</td>
-            <td class="number">2</td>
-            <td class="number">1.0</td>
-            <td class="number">$84.56</td>
-          </tr>
-          
-          <tr>
-            <td></td>
-            <td class="number">21.9K</td>
-            <td class="number">178</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>etsy blankets</td>
-            <td class="number">9</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>cuddl duds blanket</td>
-            <td class="number">74</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-          <tr>
-            <td>airline blanket</td>
-            <td class="number">45</td>
-            <td class="number">0</td>
-            <td class="number">0.0</td>
-            <td class="number">$0.00</td>
-          </tr>
-          
-        </tbody>
-      </table>
+      
     </div>
-    
 
     <!-- Footer -->
     <div class="footer">
